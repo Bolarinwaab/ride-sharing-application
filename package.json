@@ -1,0 +1,8 @@
+{
+  "name": "ridenow-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RideNow ride-sharing architecture and domain service portfolio project",
+  "scripts": {"test": "node --test test/*.test.js"},
+  "engines": {"node": ">=20"}
+}
