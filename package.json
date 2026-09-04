@@ -1,8 +1,9 @@
 {
   "name": "ridenow-portfolio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "RideNow ride-sharing architecture and domain service portfolio project",
-  "scripts": {"test": "node --test test/*.test.js"},
-  "engines": {"node": ">=20"}
+  "description": "RideNow production-ready ride-sharing platform reference implementation",
+  "scripts": {"test": "node --test test/*.test.js", "check": "node --check src/config.js && node --check src/http.js && node --check src/services/rideService.js && node --check src/integrations/stripe.js && node --check src/integrations/googleMaps.js"},
+  "engines": {"node": ">=20"},
+  "dependencies": {"firebase-admin": "^13.6.0"}
 }
