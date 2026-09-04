@@ -1,0 +1,2 @@
+function requireAuth(verifier){return async function(req,res,next){try{const header=req.headers.authorization||'';if(!header.startsWith('Bearer '))throw new Error('Missing bearer token');req.user=await verifier.verify(header.slice(7));return next();}catch(error){res.writeHead(401,{'Content-Type':'application/json'});return res.end(JSON.stringify({error:'unauthorized'}));}};}
+module.exports={requireAuth};
