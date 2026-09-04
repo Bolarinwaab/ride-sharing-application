@@ -1,0 +1,4 @@
+const crypto=require('node:crypto');
+function createIdempotencyKey(value){if(!value||String(value).length<16)throw new Error('Idempotency key must be at least 16 characters');return crypto.createHash('sha256').update(String(value)).digest('hex');}
+async function requestRide({key,riderId,pickup,destination,repository}){const idempotencyKey=createIdempotencyKey(key);const existing=await repository.findByIdempotencyKey(idempotencyKey);if(existing)return existing;if(!riderId||!pickup||!destination)throw new Error('riderId, pickup and destination are required');return repository.create({idempotencyKey,riderId,pickup,destination,status:'REQUESTED'});}
+module.exports={createIdempotencyKey,requestRide};
